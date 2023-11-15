@@ -1,59 +1,18 @@
-import os
-
+from flask import Flask, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, flash, redirect, render_template, request, session
-from flask_session import Session
-from werkzeug.security import check_password_hash, generate_password_hash
-
-
-from helpers import apology, login_required, lookup, usd
+from datetime import datetime
 
 # Configure application
 app = Flask(__name__)
-
-# Custom filter
-app.jinja_env.filters["usd"] = usd
-
-
-# Configure session to use filesystem (instead of signed cookies)
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
-
-# Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///finance.db")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///project.db'
+db = SQLAlchemy(app)
 
 
-@app.after_request
-def after_request(response):
-    """Ensure responses aren't cached"""
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    response.headers["Expires"] = 0
-    response.headers["Pragma"] = "no-cache"
-    return response
-
-
-@app.route("/")
-@login_required
+@app.route("/", methods=["GET", "POST"])
 def index():
     """Show portfolio of stocks"""
     if request.method == "GET":
-        stocks = db.execute(
-            "SELECT symbol ,shares,SUM(shares) as total_shares FROM transactions WHERE user_id = :user_id GROUP BY symbol HAVING total_shares > 0", user_id=session["user_id"])
-        cash = db.execute("SELECT cash FROM users WHERE id = :user_id ",
-                          user_id=session["user_id"])[0]["cash"]
-        total_value = cash
-        total = cash
-        shares = 0
-        for stock in stocks:
-            shares = stock["shares"]
-            quote = lookup(stock["symbol"])
-            stock["price"] = quote["price"]
-            stock["name"] = quote["name"]
-            stock["value"] = stock["price"] + stock["total_shares"]
-            total_value = stock["value"]+total_value
-            total = stock["value"]+total
-    return render_template("index.html", stocks=stocks, shares=shares, cash=cash, total_value=total_value, total=total)
+        return render_template("index1.html")
 
 
 @app.route("/buy", methods=["GET", "POST"])

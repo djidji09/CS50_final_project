@@ -1,0 +1,65 @@
+.card {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 25px;
+  }
+  .card a {
+    text-decoration: none;
+    color: var(--link);
+    transition: 300ms;
+    transition: color 2s ease-out;
+    transition: 500ms;
+    font-size: 3.5rem;
+  }
+
+  .card:hover a {
+    color: var(--link_hover);
+    font-size: 4.5rem;
+    text-decoration: none;
+  }
+
+  .glass {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0)
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  footer {
+    margin-top: 15vh;
+  }
+
+  .light {
+    --background_color: beige;
+    --text_color: var(--text_color);
+    --heading_color: black;
+    --link: rgb(56, 54, 54);
+    --link_hover: black;
+    --footer_color: rgb(24, 24, 24);
+    --scroll: bisque;
+    --scroll_background: black;
+  }
+
+  /* dark */
+
+  .dark {
+    --background_color: #121212;
+    --text_color: rgb(134, 134, 119);
+    --heading_color: beige;
+    --link: beige;
+    --link_hover: black;
+    --footer_color: beige;
+    --scroll: black;
+    --scroll_background: bisque;
+  }

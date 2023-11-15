@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-start">Symbol</th>
+            <th class="text-start">Name</th>
+            <th class="text-end">Shares</th>
+            <th class="text-end">Price</th>
+            <th class="text-end">TOTAL</th>
+        </tr>
+    </thead>
+   <tbody>
+
+            <tr>
+                {% for stock in stocks %}
+                <tr>
+                    <td class="text-start">{{ stock.symbol }}</td>
+                    <td class="text-start">{{ stock.name }}</td>
+                    <td class="text-end">{{ stock.total_shares }}</td>
+                    <td class="text-end">{{ stock.price|usd }}</td>
+                    <td class="text-end">{{ (stock.price * stock.total_shares)|usd }}</td>
+
+                </tr>
+            {% endfor %}
+            </tr>
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td class="border-0 fw-bold text-end" colspan="4">Cash</td>
+            <td class="border-0 text-end">{{ cash|usd }}</td>
+        </tr>
+        {% for stock in stocks %}
+        <tr>
+            <td class="border-0 fw-bold text-end" colspan="4">TOTAL</td>
+            <td class="border-0 w-bold text-end">{{ (cash+(stock.price * stock.total_shares))|usd }}</td>
+        </tr>
+        {% endfor %}
+    </tfoot>
+</table>
+{% endblock %}

@@ -1,0 +1,75 @@
+.grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    border-radius: 50px;
+    transform: scale(0.9);
+    background-color: var(--background_color);
+    overflow: hidden;
+    position: relative;
+
+    transition: 500ms;
+  }
+  .card:hover {
+    transform: scale(1);
+    cursor: pointer;
+  }
+  .card img {
+    max-height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .logo img {
+    scale: 1;
+    object-fit: none;
+  }
+  .text-overlay {
+    position: absolute;
+    top: 50%; /* Position at the vertical center */
+    left: 50%; /* Position at the horizontal center */
+    transform: translate(-50%, -50%); /* Center the text */
+    color: white;
+    text-align: center;
+    width: 100%; /* Ensure full width */
+  }
+  .text-overlay h3 {
+    transition: 500ms;
+  }
+
+  .card:hover h3 {
+    font-size: 50px;
+  }
+  .spinner-border{
+    display:none ;
+  }
+
+  .light {
+    --background_color: beige;
+    --text_color: var(--text_color);
+    --heading_color: black;
+    --link: rgb(56, 54, 54);
+    --link_hover: black;
+    --footer_color: rgb(24, 24, 24);
+    --scroll: bisque;
+    --scroll_background: black;
+  }
+
+  /* dark */
+
+  .dark {
+    --background_color: #121212;
+    --text_color: rgb(134, 134, 119);
+    --heading_color: beige;
+    --link: beige;
+    --link_hover: black;
+    --footer_color: beige;
+    --scroll: black;
+    --scroll_background: bisque;
+  }

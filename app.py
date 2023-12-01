@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -13,6 +13,26 @@ def index():
     """Show portfolio of stocks"""
     if request.method == "GET":
         return render_template("index.html")
+    else:
+        redirect("login")
+
+
+@app.route("/sign_up", methods=["GET", "POST"])
+def sign_up():
+    """Show portfolio of stocks"""
+    if request.method == "GET":
+        return render_template("sign_up.html")
+    else:
+        redirect("/login")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    """Show portfolio of stocks"""
+    if request.method == "GET":
+        return render_template("login.html")
+    else:
+        redirect("/")
 
 
 # running the debuger

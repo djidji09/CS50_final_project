@@ -15,15 +15,15 @@ def index():
         return redirect(url_for("login"))
 
 
-@app.route("sign_up", methods=["GET", "POST"])
+@app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
     if request.method == "GET":
         return render_template("sign_up.html")
     else:
-        return redirect("/login")  # Added return statement
+        return redirect(url_for("login"))  # Added return statement
 
 
-@app.route("login", methods=["GET", "POST"])
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
         return render_template("login.html")

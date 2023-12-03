@@ -30,8 +30,8 @@
   <body class="light">
     <nav class="navbar container-fluid">
       <ul class="navbar_list glass">
-        <li><a href="index.html">main</a></li>
-        <li><a href="2.html">hobbies</a></li>
+        <li><a href="{{ url_for('main') }}">main</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
         <li class="has_dropdown">
           <a id="swatch" href="#">theme</a>
           <!-- <ul class="dropdown ">
@@ -41,9 +41,9 @@
         </li> -->
         </li>
 
-        <li><a href="4.html">about me</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
         <li>
-          <a href="#contact us">Contact me</a>
+          <a href="{{ url_for('sign_up') }}">sign up</a>
         </li>
       </ul>
     </nav>

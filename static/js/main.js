@@ -3,6 +3,11 @@ let light = document.getElementById('light');
 let swatch = document.getElementById('swatch')
 let body = document.body;
 
+//applying the cashed theme 
+const theme = localStorage.getItem('theme');
+if (theme){
+    body.classList.add(theme);
+}
 
 //dark.onclick = () => {
 //    body.classList.remove('light');
@@ -12,5 +17,12 @@ let body = document.body;
 //    body.classList.replace('dark', 'light');
 //};
 swatch.onclick = ( ) => {
-    body.classList.toggle('dark');
+    if (body.classList.contains('light')) {
+        body.classList.replace('light', 'dark');
+        localStorage.setItem('theme', 'dark');
+    } else if (body.classList.contains('dark')) {
+        body.classList.replace('dark', 'light');
+        localStorage.setItem('theme', 'light');
+    }
+    
 };

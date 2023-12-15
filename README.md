@@ -1,3 +1,7 @@
-# CS50_final_project
+# GYM webapp
 
-a web app that let you know how many people are in the gym and let you make a workout program so you can structure you're workout however you like
+#### Video Demo: <URL HERE>
+
+#### Description:
+
+This is a gym webapp built using HTML, CSS , JavaScript and python for the backend using flask. It allows users to view how many people are in the gym in real time and program thier workout acording everything in the same web app

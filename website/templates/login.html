@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block title %} Log In {% endblock %} {% block
 content %}
 <div class="wrapper">
-  <form action="/login" method="post">
+  <form action="{{ url_for('auth.login') }}" method="post">
     <div>
       <input
         autocomplete="off"
@@ -21,6 +21,6 @@ content %}
       />
     </div>
     <button type="submit">Log In</button>
-    </form>
-  </div>
+  </form>
+</div>
 {% endblock %}

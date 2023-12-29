@@ -29,7 +29,6 @@ def create_app():
     @login_manager.user_loader
     def load_user(id):
         return user.query.get(int(id))
-
     return app
 
 

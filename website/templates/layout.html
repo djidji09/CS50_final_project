@@ -30,30 +30,29 @@
   <body class="light">
     <nav class="navbar container-fluid">
       <ul class="navbar_list glass">
-        <li><a href="{{ url_for('views.home') }}">main</a></li>
-        <li><a href="{{ url_for('auth.login') }}">Login</a></li>
-        <li class="has_dropdown">
-          <a id="swatch" href="#">theme</a>
-          <!-- <ul class="dropdown ">
-            <li class="dropdown_item"><a id="dark" href="#">dark</a></li>
-            <li class="dropdown_item"><a id="light" href="#">light</a></li>
-          </ul>
-        </li> -->
-        </li>
+        {% if current_user.is_authenticated %}
+        <li><a href="{{ url_for('views.home') }}">GYM</a></li>
+        <li><a id="swatch" href="#">theme</a></li>
+        <li><a href="{{ url_for('views.exercices') }}">exercices</a></li>
 
         <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
-        <li>
-          <a href="{{ url_for('auth.sign_up') }}">sign up</a>
-        </li>
+        {% else %}
+        <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+        <li><a id="swatch" href="#">theme</a></li>
+        <li><a href="{{ url_for('auth.sign_up') }}">sign up</a></li>
+        {% endif %}
       </ul>
     </nav>
-    #flashing messages {% with messages =
-    get_flashed_messages(with_categories=true) %} {% if messages %} {% for
-    category,message in messages %} {% if category== 'danger' %}
-    <div class="danger">{{message}}</div>
-    {% else %}
-    <div class="success">{{message}}</div>
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <div class="flash">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category,message in messages %} {% if category==
+      'error' %}
+      <div class="error">{{message}}</div>
+      {% else %}
+      <div class="success">{{message}}</div>
+      {% endif %} {% endfor %} {% endif %} {% endwith %}
+    </div>
     <main>{% block content %}{% endblock %}</main>
   </body>
 </html>

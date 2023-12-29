@@ -260,6 +260,26 @@ button:hover {
   background-color: #45a049;
 }
 
+/* styling flashing messages*/
+.flash {
+  text-align: left;
+  max-width: 70%;
+  /* position message at top of page and centered */
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+/*styling error messages*/
+.error {
+  color: red;
+}
+/*styling succes  messages*/
+.success {
+  color: green;
+}
+
 /* themes */
 
 /*light */

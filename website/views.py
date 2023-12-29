@@ -13,3 +13,12 @@ def home():
         return render_template("index.html")
     else:
         return render_template("index.html")
+
+
+@views.route('/exercices', methods=['GET', 'POST'])
+@login_required
+def exercices():
+    if request.method == 'POST':
+        return render_template("exerciecs.html")
+    else:
+        return render_template("exercices.html")

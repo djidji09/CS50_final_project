@@ -139,7 +139,7 @@ body::-webkit-scrollbar-track {
 
 .typing-demo {
   width: 17ch;
-  animation: typing 2s steps(17), blink 0.5s step-end infinite alternate;
+  animation: typing 2s steps(30), blink 0.5s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;
@@ -228,38 +228,120 @@ p.footer {
   opacity: 1;
   pointer-events: auto;
 }
+*,
+*:before,
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+form {
+  height: 520px;
+  width: 400px;
+  background-color: var(--background_color_form);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 30px var(--placeholder);
+  padding: 10px 30px;
+  font-weight: bolder;
+}
+form.gym {
+  padding: 50px 30px;
+}
+form * {
+  font-family: "Poppins", sans-serif;
+  color: var(--black);
+  font-weight: bolder;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+form h3 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--placeholder);
+}
+input {
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: var(--background_color_input);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 300;
+}
+::placeholder {
+  color: var(--placeholder);
+}
+button {
+  padding-top: 10px;
+  margin-top: 50px;
+  width: 100%;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* Style when the input field is focused */
+input:focus {
+  border-color: var(--white);
+  outline: none;
+}
 /* Basic styling for the input field */
+/*
 input {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 0.5px var(--text_color_input);
   border-radius: 4px;
+  background-color: var(--background_color_input);
+  color: var(--text_color_input);
 }
 
-/* Style when the input field is focused */
-input:focus {
-  border-color: #4caf50;
-  outline: none;
-}
+/*
+
 
 /* Style for the login button */
+/*
 button {
   background-color: #4caf50;
   color: white;
   padding: 10px 15px;
-  margin-top: 10px;
+  margin: 10px auto; 
+  display: block;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 /* Style when the login button is hovered */
+/*
 button:hover {
   background-color: #45a049;
 }
-
+*/
 /* styling flashing messages*/
 .flash {
   text-align: left;
@@ -285,6 +367,11 @@ button:hover {
 /*light */
 
 .light {
+  --white: white;
+  --black: black;
+  --placeholder: black;
+  --background_color_input: #ffffff;
+  --background_color_form: #ebebe0;
   --background_color: #f5f5dc;
   --text_color: var(--text_color);
   --heading_color: black;
@@ -298,6 +385,11 @@ button:hover {
 /* dark */
 
 .dark {
+  --white: black;
+  --black: white;
+  --placeholder: white;
+  --background_color_input: rgb(97, 97, 97);
+  --background_color_form: rgb(58, 58, 58);
   --background_color: #121212;
   --text_color: rgb(134, 134, 119);
   --heading_color: #f5f5dc;

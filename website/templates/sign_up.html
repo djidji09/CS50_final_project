@@ -1,42 +1,37 @@
 {% extends "layout.html" %} {% block title %} sign_up {% endblock %} {% block
 content %}
-<div class="wrapper">
-  <form action="{{ url_for('auth.sign_up') }}" method="post">
-    <div>
-      <input
-        autofocus
-        id="email"
-        name="email"
-        placeholder="Enter you're email"
-        type="email"
-      />
-    </div>
-    <div>
-      <input
-        autocomplete="off"
-        id="username"
-        name="username"
-        placeholder="Username"
-        type="text"
-      />
-    </div>
-    <div>
-      <input
-        id="password1"
-        name="password1"
-        placeholder="Password"
-        type="password"
-      />
-    </div>
-    <div>
-      <input
-        id="password2"
-        name="password2"
-        placeholder="confirm you're password"
-        type="password"
-      />
-    </div>
-    <button type="submit">sign_up</button>
-  </form>
-</div>
+<form action="{{ url_for('auth.sign_up') }}" method="post">
+  <label for="">Email</label>
+  <input
+    autofocus
+    id="email"
+    name="email"
+    placeholder="Enter you're email"
+    type="email"
+  />
+  <label for="username">username</label>
+  <input
+    autocomplete="off"
+    id="username"
+    name="username"
+    placeholder="Username"
+    type="text"
+  />
+  <label for="password1">password</label>
+  <input
+    id="password1"
+    name="password1"
+    placeholder="Password"
+    type="password"
+  />
+  <label for="password2">confirmation</label>
+  <input
+    id="password2"
+    name="password2"
+    placeholder="confirm you're password"
+    type="password"
+  />
+  <label></label>
+  <button type="submit">sign up</button>
+</form>
 {% endblock %}

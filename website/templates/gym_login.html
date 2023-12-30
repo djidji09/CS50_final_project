@@ -1,17 +1,18 @@
 {% extends "layout.html" %} {% block title %} gym Log In {% endblock %} {% block
 content %}
 <div class="wrapper">
-  <form action="{{ url_for('views.gym_login') }}" method="post">
-    <div>
-      <input
-        autocomplete="off"
-        autofocus
-        id="gym_name"
-        name="gym_name"
-        placeholder="gym name"
-        type="text"
-      />
-    </div>
+  <form class="gym" action="{{ url_for('views.gym_login') }}" method="post">
+    <label for="gym_name">gym name</label>
+    <input
+      class="gym"
+      autocomplete="off"
+      autofocus
+      id="gym_name"
+      name="gym_name"
+      placeholder="gym name"
+      type="text"
+    />
+    <label></label>
     <button type="submit">choose this gym</button>
   </form>
 </div>

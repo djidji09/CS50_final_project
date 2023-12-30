@@ -8,6 +8,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), nullable=False, unique=True)
     password = db.Column(db.String(80), nullable=False)
     logged_in = db.Column(db.Boolean, default=False)
+    gym_check_in = db.Column(db.Boolean, default=False)
     gym_id = db.Column(db.Integer, db.ForeignKey('gym.id'))
 
 

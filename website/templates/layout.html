@@ -33,8 +33,12 @@
         {% if current_user.is_authenticated %}
         <li><a href="{{ url_for('views.home') }}">GYM</a></li>
         <li><a id="swatch" href="#">theme</a></li>
-        <li><a href="{{ url_for('views.exercices') }}">exercices</a></li>
-
+        <li><a href="{{ url_for('views.gym_login') }}">gym</a></li>
+        {% if current_user.gym_check_in %}
+        <li><a href="{{ url_for('views.check_out') }}">check_out</a></li>
+        {% else %}
+        <li><a href="{{ url_for('views.check_in') }}">check_in</a></li>
+        {% endif %}
         <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
         {% else %}
         <li><a href="{{ url_for('auth.login') }}">Login</a></li>

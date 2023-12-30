@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import user as user_db
+from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db  # means from __init__.py import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -14,7 +14,7 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
         print("done taking user data")
-        user = user_db.query.filter_by(username=username).first()
+        user = User.query.filter_by(username=username).first()
         print("done geting the data into a variable")
         if user:
             if check_password_hash(user.password, password):
@@ -27,8 +27,7 @@ def login():
         else:
             flash('Email does not exist.', category='error')
 
-    return render_template("login.html", user=current_user) 
-    
+    return render_template("login.html", user=current_user)
 
 
 @auth.route('/logout')
@@ -49,7 +48,7 @@ def sign_up():
         print("done")
 
         print("checking if the user is in the databe")
-        user = user_db.query.filter_by(email=email).first()
+        user = User.query.filter_by(email=email).first()
         print("done")
         print("some conditions")
         if user:
@@ -65,7 +64,7 @@ def sign_up():
         else:
             print("done")
             print("hashing the password and puting the ")
-            new_user = user_db(email=email, username=username, password=generate_password_hash(
+            new_user = User(email=email, username=username, password=generate_password_hash(
                 password1, method='pbkdf2:sha256', salt_length=8))
 
             print("puting everything in the database")
@@ -80,3 +79,9 @@ def sign_up():
 
             return redirect(url_for('views.home'))
     return render_template("sign_up.html")
+# @auth.route('/gym_login', methods=['GET', 'POST'])
+# def gym_login():
+#    if request.method == 'POST':
+#
+#
+#    else :

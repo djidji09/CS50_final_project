@@ -18,7 +18,7 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/auth')
 
-    from .models import user, gym
+    from .models import User, Gym
     with app.app_context():
         db.create_all()
 
@@ -28,7 +28,7 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(id):
-        return user.query.get(int(id))
+        return User.query.get(int(id))
     return app
 
 
